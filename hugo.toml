@@ -1,6 +1,6 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://phosphene.xyz'
 languageCode = 'en-us'
-title = 'Phosphene.xyz'
+title = 'Phosphene | HomePage'
 
 theme = "gokarna"
 
@@ -15,6 +15,7 @@ enableRobotsTXT = true
   metaKeywords = ["blog", "gokarna", "hugo"] #seo
   accentColor = "#8000ff"
   footer = "Phosphene.xyz"
+  Hugothememessage = "Powered by Hugo Theme:"
 #  socialIcons = [
 #    {name = "discord", url = "https://logodownload.org/wp-content/uploads/2017/11/discord-logo-01.png"}
 #  ]

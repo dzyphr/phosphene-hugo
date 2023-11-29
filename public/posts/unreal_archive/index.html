@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #8000ff;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research</title>
+    <meta name="description" content="Software Development and Research">
+    <meta name="keywords" content='blog, gokarna, hugo, Archive'>
+
+    <meta property="og:url" content="https://phosphene.xyz/posts/unreal_archive/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research">
+    <meta property="og:description" content="Software Development and Research">
+    <meta property="og:image" content="https://phosphene.xyz/humm.png">
+    <meta property="og:image:secure_url" content="https://phosphene.xyz/humm.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research">
+    <meta name="twitter:description" content="Software Development and Research">
+    <meta property="twitter:domain" content="https://phosphene.xyz/posts/unreal_archive/">
+    <meta property="twitter:url" content="https://phosphene.xyz/posts/unreal_archive/">
+    <meta name="twitter:image" content="https://phosphene.xyz/humm.png">
+
+    
+    <link rel="canonical" href="https://phosphene.xyz/posts/unreal_archive/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://phosphene.xyz">
+                <img src='/humm.png' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://phosphene.xyz">Phosphene | HomePage</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://phosphene.xyz/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://phosphene.xyz/tags/"> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://discord.gg/nts97rGX"> Discord </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/dzyphr"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://phosphene.xyz/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://phosphene.xyz/tags/"> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://discord.gg/nts97rGX"> Discord </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/dzyphr"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            November 6, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://phosphene.xyz/tags/archive">Archive</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Unreal Engine Development Page
+Posting stuff related to unreal engine development</p>
+<p>Server Replication Notes</p>
+<p>When testing rapid fire projectiles replicated on a multiplayer server, we discovered that high speed settings like 50,000 would cause errors on client replication. The errors would make it so the projectile impacts would not replicate at a specific proximity to the character even though the hit detection was still validating that the projectile was being handled. Still unsure whats causing this, however it&rsquo;s easily fixed by using a more reasonable speed like 5,000.</p>
+<p>Replication through blueprints</p>
+<p>You can replicate any of your blueprint functions by calling them from a &ldquo;Custom Event&rdquo; that is set to &ldquo;Call on Server&rdquo;. If the function needs to be cast to every single player, you can cast the custom event to another custom event that will &ldquo;Multicast&rdquo; the replication call.</p>
+<p>After creating the custom events they will be referenceable from your blueprint, set your Call on Server custom event into your reference for Multicasting, then put your multicast custom event into the function it needs to replicate</p>
+<p>You should also cast into your call on server reference from whatever input causes your replicated function, you can connect this initialization into the final result of the function if it is something like look rotation that will be constantly replicated. You do not want constantly replicated events to be handled exclusively through the network. This could cause something like view rotation to become choppy because it will only be updated as fast as its server latency. In this case, its worth noting the &ldquo;reliable&rdquo; button on your custom event should be OFF if the event is going to be called frequently.</p>
+<p>Events that do not happen as frequently but must be replicated losslessly should be marked as &ldquo;reliable&rdquo; when setting up their custom replication events</p>
+<p>Individual variables like floats and booleans can also be replicated(and usually essentially need to be) through an option on the blueprint titled replication. You can set it to replicated or repNotify. When set to replicated the variable will allow input from the server to influence changes in the networked game, when set to repNotify the Client and Server will experience the same instance of events that are performed on any of the connected clients</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let mybutton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2023 Phosphene.xyz</span>
+    
+    <span>
+	    Powered by Hugo Theme: <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Phosphene | HomePage</title>
+    <link>https://phosphene.xyz/</link>
+    <description>Recent content on Phosphene | HomePage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Nov 2023 23:52:23 -0600</lastBuildDate>
+    <atom:link href="https://phosphene.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Atomic Analogs | Atomic Swap Software</title>
+      <link>https://phosphene.xyz/posts/atomicanalogsinfo/</link>
+      <pubDate>Mon, 06 Nov 2023 23:52:23 -0600</pubDate>
+      <guid>https://phosphene.xyz/posts/atomicanalogsinfo/</guid>
+      <description>About the project: Atomic Analogs is a multi-faceted project focused on cross-chain atomic swaps.
+Atomic Swap is a cryptographic multi-party protocol that enforces a trustless hand-off of pre-generated secrets.
+These secrets control the spending path of some coins on a blockchain that each party in the protocol wishes to aquire.
+Thus Atomic Swaps allow for two parties to trustlessly &amp;ldquo;swap&amp;rdquo; coins using this mechanism.
+A basic Atomic Swap protocol was initially discussed by Tier Nolan on the Bitcoin talk forums back in 2013: https://bitcointalk.</description>
+    </item>
+    <item>
+      <title>[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research</title>
+      <link>https://phosphene.xyz/posts/unreal_archive/</link>
+      <pubDate>Mon, 06 Nov 2023 21:22:49 -0600</pubDate>
+      <guid>https://phosphene.xyz/posts/unreal_archive/</guid>
+      <description>Unreal Engine Development Page Posting stuff related to unreal engine development
+Server Replication Notes
+When testing rapid fire projectiles replicated on a multiplayer server, we discovered that high speed settings like 50,000 would cause errors on client replication. The errors would make it so the projectile impacts would not replicate at a specific proximity to the character even though the hit detection was still validating that the projectile was being handled.</description>
+    </item>
+    <item>
+      <title>[OUTDATED/ARCHIVED] Vulkan 3D API Development</title>
+      <link>https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/</link>
+      <pubDate>Mon, 06 Nov 2023 21:05:57 -0600</pubDate>
+      <guid>https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/</guid>
+      <description>Outdated Tutorial, for Archival purposes mainly Page Dedicated to Vulkan API Here is my guide on booting from a fresh Ubuntu install to a VulkanSDK enabled setup so you can work with the vulkan-tutorial:
+This is a rough guide I made while following Vulkan-Tutorial.com, it can be followed using any vulkan compatible Ubuntu Distro but its called 20.04 because thats the version I started on.
+This guide will fill in details that I had to discover myself through research and looking through the comments on the tutorial.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://phosphene.xyz/index-about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://phosphene.xyz/index-about/</guid>
+      <description>About the site: Phosphene.xyz is my personal development page. It is currently under consntruction / remodeling from a regular HTML site to a Hugo site. Please have a look around! ☕ </description>
+    </item>
+  </channel>
+</rss>

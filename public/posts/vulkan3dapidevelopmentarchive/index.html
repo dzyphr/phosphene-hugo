@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #8000ff;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>[OUTDATED/ARCHIVED] Vulkan 3D API Development</title>
+    <meta name="description" content="Software Development and Research">
+    <meta name="keywords" content='blog, gokarna, hugo, Archive'>
+
+    <meta property="og:url" content="https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="[OUTDATED/ARCHIVED] Vulkan 3D API Development">
+    <meta property="og:description" content="Software Development and Research">
+    <meta property="og:image" content="https://phosphene.xyz/humm.png">
+    <meta property="og:image:secure_url" content="https://phosphene.xyz/humm.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[OUTDATED/ARCHIVED] Vulkan 3D API Development">
+    <meta name="twitter:description" content="Software Development and Research">
+    <meta property="twitter:domain" content="https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/">
+    <meta property="twitter:url" content="https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/">
+    <meta name="twitter:image" content="https://phosphene.xyz/humm.png">
+
+    
+    <link rel="canonical" href="https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://phosphene.xyz">
+                <img src='/humm.png' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://phosphene.xyz">Phosphene | HomePage</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://phosphene.xyz/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://phosphene.xyz/tags/"> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://discord.gg/nts97rGX"> Discord </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/dzyphr"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://phosphene.xyz/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://phosphene.xyz/tags/"> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://discord.gg/nts97rGX"> Discord </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/dzyphr"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>[OUTDATED/ARCHIVED] Vulkan 3D API Development</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">
+            November 6, 2023
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://phosphene.xyz/tags/archive">Archive</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="outdated-tutorial-for-archival-purposes-mainly">Outdated Tutorial, for Archival purposes mainly</h1>
+<p>Page Dedicated to Vulkan API
+Here is my guide on booting from a fresh Ubuntu install to a VulkanSDK enabled setup so you can work with the vulkan-tutorial:</p>
+<p>This is a rough guide I made while following Vulkan-Tutorial.com, it can be followed using any vulkan compatible Ubuntu Distro but its called 20.04 because thats the version I started on.</p>
+<p>This guide will fill in details that I had to discover myself through research and looking through the comments on the tutorial.</p>
+<p>I hope it can be useful, I will try to keep it updated. I am currently working on a guide to convert this into an efficient renderer-&gt;engine stil in c++.
+Comments section may be added later.
+Fix Packages Method (use incase of unknown kernel errors) :</p>
+<pre tabindex="0"><code>sudo apt update --fix-missing
+
+sudo apt install -f
+</code></pre><p>Step 1: Make sure to set up Sudo-User Priveleges using usermod:</p>
+<p>(CHANGE “username” to your username)</p>
+<pre tabindex="0"><code>sudo usermod -aG sudo username 
+</code></pre><p>Install all software updates before proceeding with further software installations</p>
+<p>How To Check Your Current Kernel Version</p>
+<p>At a terminal window, type:</p>
+<p><code>uname –rs</code></p>
+<p>The terminal returns something like:</p>
+<p><code>Linux 5.5.0-64 generic</code></p>
+<p>Follow these steps to update kernel: (repeat sometimes)</p>
+<pre tabindex="0"><code>sudo apt-get update
+
+
+sudo apt-get dist-upgrade
+</code></pre><p>Install Brave Browser(or browser of choice)</p>
+<pre tabindex="0"><code>sudo apt install apt-transport-https curl
+
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+echo &#34;deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main&#34; | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+
+sudo apt install brave-browser
+</code></pre><p>(If you get gnutls_handshake() errors after adding the Brave repository on Debian 9, you may need to uninstall old conflicting packages.)</p>
+<p>Download and install amd-vulkan gpu drivers (rx570 drivers for me)</p>
+<p><a href="https://www.amd.com/en/support/graphics/radeon-500-series/radeon-rx-500-series/radeon-rx-570">https://www.amd.com/en/support/graphics/radeon-500-series/radeon-rx-500-series/radeon-rx-570</a></p>
+<p>WARNING, if you are on an AMD 6000 GPU the usual install for drivers may not be working. See this blogpost for details on installing for 6000 series: <a href="https://forum.level1techs.com/t/ubuntu-20-10-rx-6800-xt-how-to-steam-vulkan-up-and-runing-guide-wip/164137">https://forum.level1techs.com/t/ubuntu-20-10-rx-6800-xt-how-to-steam-vulkan-up-and-runing-guide-wip/164137</a></p>
+<p>Upgrade GPU Open-GL Drivers:</p>
+<p><code>sudo add-apt-repository ppa:oibaf/graphics-drivers</code></p>
+<p>Use this to get essential packages like make:</p>
+<p><code>sudo apt-get install build-essential</code></p>
+<p>Install Cmake:</p>
+<pre tabindex="0"><code>sudo apt-get install cmake
+
+
+sudo apt-get install git python cmake
+</code></pre><p>Vulkan Package Installation:</p>
+<pre tabindex="0"><code>sudo apt-get install vulkan-utils mesa-vulkan-drivers
+
+
+sudo apt-get install libxcb1-dev libx11-dev libxrandr-dev libwayland-dev
+
+
+wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo apt-key add -
+
+sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-focal.list https://packages.lunarg.com/vulkan/lunarg-vulkan-focal.list
+
+
+
+sudo apt update
+sudo apt install vulkan-sdk
+sudo apt update
+</code></pre><p>(check for upgrades if any do sudo apt-get upgrade)</p>
+<p>Use these commands to ensure all needed packages were installed, they will either intall them or return as already installed:</p>
+<pre tabindex="0"><code>sudo apt install vulkan-tools: Command-line utilities, most importantly vulkaninfo and vkcube. Run these to confirm your machine supports Vulkan.
+
+sudo apt install libvulkan-dev: Installs Vulkan loader. The loader looks up the functions in the driver at runtime, similarly to GLEW for OpenGL - if you&#39;re familiar with that.
+
+sudo apt install vulkan-validationlayers-dev: Installs the standard validation layers. These are crucial when debugging Vulkan applications.
+</code></pre><p>verify VulkanSDK installation:</p>
+<p>vkvia - Will Analyze your installation</p>
+<p>vulkaninfo - Will display info about installation</p>
+<p>vkcube - Runs a Spinning Cube Test Vulkan Window</p>
+<p>setting VK_INSTANCE_LAYERS variable</p>
+<p><code> export VK_INSTANCE_LAYERS=VK_LAYER_KHRONOS_validation:VK_LAYER_LUNARG_gfxreconstruct</code></p>
+<p>Install XORG-Dev packages:</p>
+<p><code>sudo install xorg-dev</code></p>
+<p>Installing GLFW – OpenGL LinuxNative window creation tool</p>
+<p><code>sudo apt install libglfw3-dev</code></p>
+<p>Installing GLM – Linear Algebra Library</p>
+<p><code>sudo apt install libglm-dev</code></p>
+<p>Download the gcc or clang(if gcc doesn’t work when compiling use clang) shadercompiler off this unofficial github repo:</p>
+<p><a href="https://github.com/google/shaderc/blob/main/downloads.md">https://github.com/google/shaderc/blob/main/downloads.md</a></p>
+<p>Move the file “glslc” to usr/local/bin with sudo permissions</p>
+<p>Go to downloads folder, extract the install tgz file, open the extracted folder, navigate to bin, rightclick the folder and select open in terminal.</p>
+<p>Move the file with the following shell command:</p>
+<p><code>sudo mv glslc /usr/local/bin</code></p>
+<p>At this point install your IDE’s of choice. Mine are notepad++, VSCODE, and Sublime Text.</p>
+<p>Then Restart Ubuntu after running sudo apt update and sudo apt upgrade if you need to upgrade any packages.</p>
+<p>AVOID USING THE SNAP STORE(it sucks) but I had to when I started so no shame in learning WHY it sucks( i guess)</p>
+<p>If your snap store/ software installer is running an error then go to system monitor, search for snap store and hit end process. It happens usually before or during an update and shouldn’t happen after restarted like this.</p>
+<p>Ready to set up Vulkan-Tutorial</p>
+<p>If you are re-installing and continuing tutorial or project you might want to verify your vulkan installation by setting up the test environment from vulkan-tutorial.com .</p>
+<p>WHEN SETTING UP THE MAKEFILE DO IT IN VIM OR ELSE YOU WILL GET A WARNING ABOUT SPACES INSTEAD OF TABS</p>
+<p>Use this simple Vim tutorial to help type out the makefile from scratch, to avoid previously suggested error: <a href="https://www.cyberciti.biz/faq/vim-new-file-creation-command-on-linux-unix/">https://www.cyberciti.biz/faq/vim-new-file-creation-command-on-linux-unix/</a></p>
+<p>When RUNNING a make file with kernel command “make” ubuntu would not find it in the correct directory. To specify the makefile run :</p>
+<p><code>make -f makefile.mak</code></p>
+<p>You can also run the test with:</p>
+<p><code>make -f makefile.make test</code></p>
+<p>Configuring VSCode to run your executable from the VSCode debugger:</p>
+<p>In the launch.json configure the “program” entry to take the filepath of your executable like “program”: “${workspaceFolder}/VulkanTest”,</p>
+<p>Debug from GDB c++ Launch</p>
+<p>In c_cpp_properties.json use cStandard gnu17 and cppStandard c++17 compilerpath “/usr/bin/gcc” DONT CHANGE THESE IF YOU DONT NEED TO.</p>
+<p>After updating vscode intellisense4 IntellisenseMode should be “gcc-x64”</p>
+<p>Compile the shaders with compile.sh file by dragging it into terminal and entering it(possibly need sudo permission). Make sure referencing local glslc in the compile file and referencing the entire file path name to the shaders if the bash reports those files don’t exist or cannot be found.</p>
+<p>Held up at descriptor sets part, make sure rasterizer.frontface is COUNTER clockwise not clockwise</p>
+<p>Add stb_image.h to your include folder(or where your glfw and glm are):</p>
+<p><code>sudo mv stb_image.h /usr/include</code></p>
+<p>Same with tinyobj loader:</p>
+<p><code>sudo mv tiny_obj_loader.h /usr/include</code></p>
+<p>makefile paths and updated cflags:s</p>
+<pre tabindex="0"><code>VULKAN_SDK_PATH = /usr/share/doc
+
+
+STB_INCLUDE_PATH = /usr/include
+
+
+TINYOBJ_INCLUDE_PATH = /home/user/libraries/tinyobjloader
+
+
+CFLAGS = -std=c++17 -O2 -I$(VULKAN_SDK_PATH)/include -I$(STB_INCLUDE_PATH) -I$(TINYOBJ_INCLUDE_PATH)
+</code></pre><p>LOADING MODELS:</p>
+<p>ADD THIS AFTER</p>
+<pre tabindex="0"><code>return attributeDescriptions;
+
+} 
+</code></pre><p>in</p>
+<pre tabindex="0"><code>struct Vertex:
+
+
+
+bool operator==(const Vertex&amp; other) const
+
+{
+
+return pos == other.pos &amp;&amp; color == other.color &amp;&amp; texCoord == other.texCoord;
+
+}
+</code></pre><p>This line of code is referenced at the end of the tutorial but is needed for the initial test or else will generate a compiler error:</p>
+<pre tabindex="0"><code>namespace std
+
+{
+
+template&lt;&gt; struct hash&lt;Vertex&gt;
+
+{
+
+size_t operator()(Vertex const&amp; vertex) const
+
+{
+
+return ((hash&lt;glm::vec3&gt;()(vertex.pos) ^ (hash&lt;glm::vec3&gt;()(vertex.color) &lt;&lt; 1)) &gt;&gt; 1) ^ (hash&lt;glm::vec2&gt;()(vertex.texCoord) &lt;&lt; 1);
+
+}
+
+};
+
+}
+</code></pre><p>GOES ABOVE</p>
+<pre tabindex="0"><code>struct UniformBufferObject
+</code></pre>
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let mybutton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2023 Phosphene.xyz</span>
+    
+    <span>
+	    Powered by Hugo Theme: <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
