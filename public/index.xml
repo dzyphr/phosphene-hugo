@@ -6,8 +6,19 @@
     <description>Recent content on Phosphene | HomePage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Nov 2023 23:52:23 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 27 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://phosphene.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chain Fission | Cross Chain Atomic Swap Software</title>
+      <link>https://phosphene.xyz/posts/chainfissioninfo/</link>
+      <pubDate>Tue, 27 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://phosphene.xyz/posts/chainfissioninfo/</guid>
+      <description>About the project: Chain Fission is a multi-faceted project focused on cross-chain atomic swaps.
+An Atomic Swap is a cryptographic multi-party protocol that enforces a trustless hand-off of pre-generated secrets.
+These secrets control the spending path of some coins on a blockchain that each party in the protocol wishes to aquire.
+Thus Atomic Swaps allow for two parties to trustlessly &amp;ldquo;swap&amp;rdquo; coins using this mechanism.
+A basic Atomic Swap protocol was initially discussed by Tier Nolan on the Bitcoin talk forums back in 2013: https://bitcointalk.</description>
+    </item>
     <item>
       <title>Atomic Analogs | Atomic Swap Software</title>
       <link>https://phosphene.xyz/posts/atomicanalogsinfo/</link>
