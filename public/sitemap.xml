@@ -2,26 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://phosphene.xyz/tags/atomicswap/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://phosphene.xyz/posts/chainfissioninfo/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://phosphene.xyz/tags/cryptography/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
+    <loc>https://phosphene.xyz/tags/downloads/</loc>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
   </url><url>
     <loc>https://phosphene.xyz/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
   </url><url>
     <loc>https://phosphene.xyz/posts/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
+  </url><url>
+    <loc>https://phosphene.xyz/tags/releases/</loc>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
+  </url><url>
+    <loc>https://phosphene.xyz/posts/software_releases/</loc>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
   </url><url>
     <loc>https://phosphene.xyz/tags/</loc>
-    <lastmod>2025-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://phosphene.xyz/posts/atomicanalogsinfo/</loc>
-    <lastmod>2023-11-06T23:52:23-06:00</lastmod>
+    <lastmod>2026-09-11T03:48:59+00:00</lastmod>
   </url><url>
     <loc>https://phosphene.xyz/posts/unreal_archive/</loc>
     <lastmod>2023-11-06T21:22:49-06:00</lastmod>
