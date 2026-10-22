@@ -3,17 +3,17 @@
 
 	Phosphene.xyz is my personal development page.
 	
-	Exciting software releases planned soon, stay tuned...
-
 	Please have a look around! ☕
 
+Hosted software releases listed here:
+[software_releases](/posts/software_releases)
 
-## The Discord link is currently broken
+## Join the Watercraft GNU + Linux Chat Channels:
 
-### It will be replaced with a new Discord group shortly
+- IRC chat channel: `/join #watercraft` on Libera
 
-If you are interested in joining like-minded developers, embarking on novel software development journeys,
-then make sure to click the Discord link and join once the new group is formed.
+- Discord channel invite: [https://discord.gg/U3dbc6vFtF](https://discord.gg/U3dbc6vFtF)
+	- Or click `Discord` at the right side of the top bar.
 
 We are seeking developers interested in working on the following kinds of projects:
 - verifiable source control & release pipelines

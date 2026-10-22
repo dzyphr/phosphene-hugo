@@ -14,6 +14,6 @@ tags = ["Releases", "Downloads"]
 
 
 
-| Software | Short Description | Link |
-| --- | --- | --- |
-| Watercraft Linux 0.1.0 | A Linux disto built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated. | [Watercraft 0.1.0 Ketch](https://phosphene.xyz/releases/watercraft/ketch-0.1.0/) |
+| Software | Short Description | Download Link | Source Control Link |
+| --- | --- | --- | --- |
+| Watercraft 0.1.1 | A GNU + Linux distribution built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated. | [Watercraft 0.1.1 Ketch](https://phosphene.xyz/releases/watercraft/ketch-0.1.1/) | [Watercraft on GitHub](https://github.com/watercraft-devs/watercraft) |

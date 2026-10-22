@@ -6,15 +6,40 @@
     <description>Recent content in Releases on Phosphene | HomePage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Sep 2026 03:48:59 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 21:54:08 -0500</lastBuildDate>
     <atom:link href="https://phosphene.xyz/tags/releases/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Watercraft 0.1.1 Release</title>
+      <link>https://phosphene.xyz/posts/watercraft-0.1.1-release/</link>
+      <pubDate>Thu, 15 Oct 2026 21:54:08 -0500</pubDate>
+      <guid>https://phosphene.xyz/posts/watercraft-0.1.1-release/</guid>
+      <description>Watercraft 0.1.1 (Ketch) GitHub Repo
+released on GitHub as of 2026-10-15
+This release contains important bug-fixes.
+The only things that have been updated are build scripts and provision scripts, everything else is unchanged.
+Bug Fixes Removed build time and install time artifacts that persisted onto the installed sytstem unexpectedly.
+liveuser and boatswain account sudoers.d rules autologin from the liveuser account Branding is no longer being overwritten.
+/etc/os-release is no longer a symlink and should always report Watercraft on installed systems now.</description>
+    </item>
     <item>
       <title>Software Releases</title>
       <link>https://phosphene.xyz/posts/software_releases/</link>
       <pubDate>Fri, 11 Sep 2026 03:48:59 +0000</pubDate>
       <guid>https://phosphene.xyz/posts/software_releases/</guid>
       <description>phosphene.xyz will now be used to host software releases, complete with checksums and signatures always. Find ALL releases here
-Software Short Description Link Watercraft Linux 0.1.0 A Linux disto built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated. Watercraft 0.1.0 Ketch </description>
+Software Short Description Download Link Source Control Link Watercraft 0.1.1 A GNU + Linux distribution built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated.</description>
+    </item>
+    <item>
+      <title>Watercraft 0.1.0 Release</title>
+      <link>https://phosphene.xyz/posts/watercraft-0.1.0-release/</link>
+      <pubDate>Fri, 11 Sep 2026 03:48:59 +0000</pubDate>
+      <guid>https://phosphene.xyz/posts/watercraft-0.1.0-release/</guid>
+      <description>Watercraft 0.1.0 (Ketch) released on GitHub as of 2026-09-11
+GitHub Repo
+ATTENTION: version 0.1.0 has been officially superseded by 0.1.1 due build-time sudo rules persisting onto the installed system
+If you left the default name and your account is named liveuser will have passwordless root which is not secure for an actual installation.
+The builder account persisting is also insecure as it does not have a secure password.
+If you are on 0.</description>
     </item>
   </channel>
 </rss>

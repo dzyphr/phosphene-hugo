@@ -40,15 +40,21 @@ enableRobotsTXT = true
     weight = 1
 
   [[menu.main]]
+    identifier = "software"
+    name = "Software"
+    url = "https://phosphene.xyz/posts/software_releases/"
+    weight = 2
+
+  [[menu.main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
-    weight = 2
+    weight = 3
     
   [[menu.main]]
     identifier = "github"
     url = "https://github.com/dzyphr"
-    weight = 4
+    weight = 5
     
     # We use feather-icons: https://feathericons.com/
     pre = "<span data-feather='github'></span>"
@@ -56,8 +62,8 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = "discord"
     name = "Discord"
-    url = "https://discord.gg/nts97rGX"
-    weight = 3
+    url = "https://discord.gg/U3dbc6vFtF"
+    weight = 4
 
     # We use feather-icons: https://feathericons.com/
 #   pre = "<span data-feather='github'></span>"
