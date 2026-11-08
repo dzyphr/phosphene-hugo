@@ -19,6 +19,48 @@ This release contains important bug-fixes.
 
 The only things that have been updated are build scripts and provision scripts, everything else is unchanged.
 
+
+
+
+### IMPORTANT SECURITY UPDATE: NEW AS OF Oct 29 2026: CVE-2026-98432 affects the Linux kernel that ships with this Watercraft 0.1.1 ISO!
+Check your kernel version:
+```
+uname -r
+```
+If it prints anything lower than: `6.12.113+deb13-amd64` you are vulnerable.
+To patch the vulnerability simply upgrade your kernel with these commands:
+```ssh
+sudo apt update && sudo apt full-upgrade
+```
+Then reboot your system for it to take effect:
+```
+sudo reboot
+```
+Log in, then check afterwards that the correct kernel is being used:
+```
+uname -r
+# Should print 6.12.113+deb13-amd64 as of Oct 29 2026
+# Will be a higher kernel version in the future
+```
+If it prints the expected version `6.12.113+deb13-amd64` you are patched.
+
+If it does not, you may need to run `sudo dpkg --configure -a` to fix an interrupted install.
+
+After that, run `sudo reboot` again, after logging in check that the correct kernel is being used as directed above.
+
+If it STILL shows the old version try to update grub, then reboot and check again:
+
+```sh
+sudo update-grub
+sudo reboot
+```
+...log in...
+```
+uname -r
+# Should print 6.12.113+deb13-amd64 as of Oct 29 2026
+# Will be a higher kernel version in the future
+```
+
 ### Bug Fixes
 
 - Removed build time and install time artifacts that persisted onto the installed sytstem unexpectedly.
@@ -87,6 +129,9 @@ You may be able to get help with that on Discord or IRC if you want to do it man
 
 If you want to grab the script upgrades, you can just pull them from the github release, all scripts are in the `rigging/` folder.
 
+---
+
+![Watercraft GNU + Linux default desktop background wallpaper](/images/watercraft-ketch-bg-default.png)
 
 
 ---

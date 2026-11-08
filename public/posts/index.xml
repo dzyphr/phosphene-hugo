@@ -4,60 +4,51 @@
     <title>Posts on Phosphene | HomePage</title>
     <link>https://phosphene.xyz/posts/</link>
     <description>Recent content in Posts on Phosphene | HomePage</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Oct 2026 21:54:08 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 22:30:04 -2000</lastBuildDate>
     <atom:link href="https://phosphene.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Watercraft Linux Kernel Descaled</title>
+      <link>https://phosphene.xyz/posts/watercraft-descaled-linux-kernel/</link>
+      <pubDate>Wed, 04 Nov 2026 22:30:04 -2000</pubDate>
+      <guid>https://phosphene.xyz/posts/watercraft-descaled-linux-kernel/</guid>
+      <description>This is the first release of Watercraft&amp;rsquo;s in house 100% rust-free Linux build.&#xA;Linux 6.12.115 compiled with extra checks to ensure absolutely no rust was used in the build.&#xA;The build script is available in the GitHub repository and here as build.sh.&#xA;You can use it to build your own descaled kernel locally, if you build locally please contribute back anything you think might be useful.&#xA;Kernel Version: 6.12.115-2wc1&#xA;Requirements Linux computer running Watercraft 0.</description>
+    </item>
+    <item>
+      <title>Software Releases</title>
+      <link>https://phosphene.xyz/posts/software_releases/</link>
+      <pubDate>Wed, 04 Nov 2026 03:48:59 +0000</pubDate>
+      <guid>https://phosphene.xyz/posts/software_releases/</guid>
+      <description>phosphene.xyz will now be used to host software releases, complete with checksums and signatures always. Find ALL releases here&#xA;Watercraft apt repo and archive keyring here&#xA;Software Short Description Download Link Source Control Link Watercraft 0.1.1 A GNU + Linux distribution built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated.</description>
+    </item>
     <item>
       <title>Watercraft 0.1.1 Release</title>
       <link>https://phosphene.xyz/posts/watercraft-0.1.1-release/</link>
       <pubDate>Thu, 15 Oct 2026 21:54:08 -0500</pubDate>
       <guid>https://phosphene.xyz/posts/watercraft-0.1.1-release/</guid>
-      <description>Watercraft 0.1.1 (Ketch) GitHub Repo
-released on GitHub as of 2026-10-15
-This release contains important bug-fixes.
-The only things that have been updated are build scripts and provision scripts, everything else is unchanged.
-Bug Fixes Removed build time and install time artifacts that persisted onto the installed sytstem unexpectedly.
-liveuser and boatswain account sudoers.d rules autologin from the liveuser account Branding is no longer being overwritten.
-/etc/os-release is no longer a symlink and should always report Watercraft on installed systems now.</description>
-    </item>
-    <item>
-      <title>Software Releases</title>
-      <link>https://phosphene.xyz/posts/software_releases/</link>
-      <pubDate>Fri, 11 Sep 2026 03:48:59 +0000</pubDate>
-      <guid>https://phosphene.xyz/posts/software_releases/</guid>
-      <description>phosphene.xyz will now be used to host software releases, complete with checksums and signatures always. Find ALL releases here
-Software Short Description Download Link Source Control Link Watercraft 0.1.1 A GNU + Linux distribution built from Devuan Excalibur (Debian without systemd). Ships with bash scripts that make configuring a system for Development or Entertainment on Linux a lot easier. Earliest development stages still so volunteer contributors are welcomed and user patience is appreciated.</description>
+      <description>Watercraft 0.1.1 (Ketch) GitHub Repo&#xA;released on GitHub as of 2026-10-15&#xA;This release contains important bug-fixes.&#xA;The only things that have been updated are build scripts and provision scripts, everything else is unchanged.&#xA;IMPORTANT SECURITY UPDATE: NEW AS OF Oct 29 2026: CVE-2026-98432 affects the Linux kernel that ships with this Watercraft 0.1.1 ISO! Check your kernel version:&#xA;uname -r If it prints anything lower than: 6.12.113+deb13-amd64 you are vulnerable. To patch the vulnerability simply upgrade your kernel with these commands:</description>
     </item>
     <item>
       <title>Watercraft 0.1.0 Release</title>
       <link>https://phosphene.xyz/posts/watercraft-0.1.0-release/</link>
       <pubDate>Fri, 11 Sep 2026 03:48:59 +0000</pubDate>
       <guid>https://phosphene.xyz/posts/watercraft-0.1.0-release/</guid>
-      <description>Watercraft 0.1.0 (Ketch) released on GitHub as of 2026-09-11
-GitHub Repo
-ATTENTION: version 0.1.0 has been officially superseded by 0.1.1 due build-time sudo rules persisting onto the installed system
-If you left the default name and your account is named liveuser will have passwordless root which is not secure for an actual installation.
-The builder account persisting is also insecure as it does not have a secure password.
-If you are on 0.</description>
+      <description>Watercraft 0.1.0 (Ketch) released on GitHub as of 2026-09-11&#xA;GitHub Repo&#xA;ATTENTION: version 0.1.0 has been officially superseded by 0.1.1 due build-time sudo rules persisting onto the installed system&#xA;If you left the default name and your account is named liveuser will have passwordless root which is not secure for an actual installation.&#xA;The builder account persisting is also insecure as it does not have a secure password.&#xA;If you are on 0.</description>
     </item>
     <item>
       <title>[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research</title>
       <link>https://phosphene.xyz/posts/unreal_archive/</link>
       <pubDate>Mon, 06 Nov 2023 21:22:49 -0600</pubDate>
       <guid>https://phosphene.xyz/posts/unreal_archive/</guid>
-      <description>Unreal Engine Development Page Posting stuff related to unreal engine development
-Server Replication Notes
-When testing rapid fire projectiles replicated on a multiplayer server, we discovered that high speed settings like 50,000 would cause errors on client replication. The errors would make it so the projectile impacts would not replicate at a specific proximity to the character even though the hit detection was still validating that the projectile was being handled.</description>
+      <description>Unreal Engine Development Page Posting stuff related to unreal engine development&#xA;Server Replication Notes&#xA;When testing rapid fire projectiles replicated on a multiplayer server, we discovered that high speed settings like 50,000 would cause errors on client replication. The errors would make it so the projectile impacts would not replicate at a specific proximity to the character even though the hit detection was still validating that the projectile was being handled.</description>
     </item>
     <item>
       <title>[OUTDATED/ARCHIVED] Vulkan 3D API Development</title>
       <link>https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/</link>
       <pubDate>Mon, 06 Nov 2023 21:05:57 -0600</pubDate>
       <guid>https://phosphene.xyz/posts/vulkan3dapidevelopmentarchive/</guid>
-      <description>Outdated Tutorial, for Archival purposes mainly Page Dedicated to Vulkan API Here is my guide on booting from a fresh Ubuntu install to a VulkanSDK enabled setup so you can work with the vulkan-tutorial:
-This is a rough guide I made while following Vulkan-Tutorial.com, it can be followed using any vulkan compatible Ubuntu Distro but its called 20.04 because thats the version I started on.
-This guide will fill in details that I had to discover myself through research and looking through the comments on the tutorial.</description>
+      <description>Outdated Tutorial, for Archival purposes mainly Page Dedicated to Vulkan API Here is my guide on booting from a fresh Ubuntu install to a VulkanSDK enabled setup so you can work with the vulkan-tutorial:&#xA;This is a rough guide I made while following Vulkan-Tutorial.com, it can be followed using any vulkan compatible Ubuntu Distro but its called 20.04 because thats the version I started on.&#xA;This guide will fill in details that I had to discover myself through research and looking through the comments on the tutorial.</description>
     </item>
   </channel>
 </rss>

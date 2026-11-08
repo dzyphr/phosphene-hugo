@@ -1,0 +1,20 @@
+<div class="container list-posts">
+
+    <h1 class="list-title">{{ .Name }}</h1>
+
+    {{ range $i, $year := (where .Pages "Params.type" "post").GroupByDate "2006" }}
+
+    <div class="post-title posts-year-row">
+        <h2 class="posts-year post-link">{{ $year.Key }}</h2>
+        {{ if eq $i 0 }}
+        <div class="flex-break"></div>
+	<span class="post-date posts-date-label"> Updated On </span>
+        {{ end }}
+    </div>
+
+    {{- range $year.Pages -}}
+        {{- partial "list-posts.html" . -}}
+    {{ end }}
+    {{ end }}
+
+</div>

@@ -8,7 +8,7 @@ theme = "gokarna"
 enableRobotsTXT = true
 
 [params]
-  description = "Software Development and Research"
+  description = "Software Development and Releases"
   showPostsOnHomePage = "recent"
   avatarURL = "/humm.png"
   ShowBackToTopButton = true
@@ -16,6 +16,7 @@ enableRobotsTXT = true
   accentColor = "#8000ff"
   footer = "Phosphene.xyz"
   Hugothememessage = "Powered by Hugo Theme:"
+  customHeadHTML = '<link rel="stylesheet" href="/css/custom.css">'
 #  socialIcons = [
 #    {name = "discord", url = "https://logodownload.org/wp-content/uploads/2017/11/discord-logo-01.png"}
 #  ]

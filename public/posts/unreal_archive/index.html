@@ -18,19 +18,19 @@
 
     
     <title>[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research</title>
-    <meta name="description" content="Software Development and Research">
+    <meta name="description" content="Software Development and Releases">
     <meta name="keywords" content='blog, gokarna, hugo, Archive'>
 
     <meta property="og:url" content="https://phosphene.xyz/posts/unreal_archive/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research">
-    <meta property="og:description" content="Software Development and Research">
+    <meta property="og:description" content="Software Development and Releases">
     <meta property="og:image" content="https://phosphene.xyz/humm.png">
     <meta property="og:image:secure_url" content="https://phosphene.xyz/humm.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="[OUTDATED/ARCHIVED] Unreal Multiplayer Server Research">
-    <meta name="twitter:description" content="Software Development and Research">
+    <meta name="twitter:description" content="Software Development and Releases">
     <meta property="twitter:domain" content="https://phosphene.xyz/posts/unreal_archive/">
     <meta property="twitter:url" content="https://phosphene.xyz/posts/unreal_archive/">
     <meta name="twitter:image" content="https://phosphene.xyz/humm.png">
@@ -48,9 +48,11 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+    <script src="/js/bundle.min.fbe2f55794ed6ded1573152a130784ee5cb022de9676b19dd37d7559ee6f6fc6.js" integrity="sha256-&#43;&#43;L1V5Ttbe0VcxUqEweE7lywIt6WdrGd0311We5vb8Y="></script>
 
     
+    
+    <link rel="stylesheet" href="/css/custom.css">
     
 </head>
 <body>
@@ -62,14 +64,14 @@
 
         
         <div class="avatar">
-            <a href="https://phosphene.xyz">
+            <a href="https://phosphene.xyz/">
                 <img src='/humm.png' alt="avatar" />
             </a>
         </div>
         
 
         <div class="nav-title">
-            <a class="nav-brand" href="https://phosphene.xyz">Phosphene | HomePage</a>
+            <a class="nav-brand" href="https://phosphene.xyz/">Phosphene | HomePage</a>
         </div>
 
         <div class="nav-links">
@@ -183,11 +185,10 @@ Posting stuff related to unreal engine development</p>
 
     
     
-    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="scrollToTop()" title="Go to top">
         
         <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
     </svg>
-    
     <script>
         let mybutton = document.getElementById("btt-button");
 
@@ -202,22 +203,11 @@ Posting stuff related to unreal engine development</p>
                 mybutton.style.display = "none";
             }
         }
-
-        function topFunction() {
-            smoothScrollToTop();
-        }
-
-        function smoothScrollToTop() {
-            const scrollToTop = () => {
-                const c = document.documentElement.scrollTop || document.body.scrollTop;
-                if (c > 0) {
-                    window.requestAnimationFrame(scrollToTop);
-                    window.scrollTo(0, c - c / 8);
-                }
-            };
-            scrollToTop();
-        }
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}
     </script>
+    
 </div>
 
 

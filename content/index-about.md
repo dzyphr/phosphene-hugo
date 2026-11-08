@@ -1,9 +1,12 @@
 
-# About the site:
 
-	Phosphene.xyz is my personal development page.
-	
-	Please have a look around! ☕
+# Welcome to [Phosphene.xyz](/)
+
+    This site is used for publishing software releases and related posts.
+
+    It will also be used for other cool things in the future.
+
+	Please have a look around! 
 
 Hosted software releases listed here:
 [software_releases](/posts/software_releases)
