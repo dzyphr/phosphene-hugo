@@ -1,0 +1,40 @@
+{{ $ui := .ui }}
+{{ $day := .day }}
+<section class="tracker-section" aria-labelledby="tracker-composition">
+  <h2 id="tracker-composition">{{ $ui.title }}</h2>
+  <p class="tracker-subtitle">{{ $ui.subtitle }}</p>
+
+  {{ range $ui.rows }}
+    {{/* Turn each segment into a percentage of this row's total */}}
+    {{ $total := float (index $day .total) }}
+    {{ $data_pct := 0.0 }}
+    {{ $segs := slice }}
+    {{ range .segments }}
+      {{ $amount := mul (float (index $day .field)) (float (default 1 .multiply)) }}
+      {{ $pct := div (mul $amount 100.0) $total }}
+      {{ $data_pct = add $data_pct $pct }}
+      {{ $segs = $segs | append (dict "name" .name "class" .class "pct" $pct) }}
+    {{ end }}
+
+    <div class="tracker-bar-row">
+      <div class="tracker-bar-head">
+        <span>{{ .label }}</span>
+        <span class="tracker-mono">{{ printf "%.2f%%" $data_pct }} {{ $ui.data_suffix }}</span>
+      </div>
+      <div class="tracker-bar" role="img"
+           aria-label="{{ .label }}: {{ range $i, $s := $segs }}{{ if $i }}, {{ end }}{{ $s.name }} {{ printf "%.2f" $s.pct }} percent{{ end }}">
+        {{ range $segs }}
+          <div class="tracker-bar-seg is-{{ .class }}" style="width: {{ printf "%.3f" .pct }}%"></div>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
+  <div class="tracker-legend">
+    {{ range (index $ui.rows 0).segments }}
+      <span class="tracker-legend-item"><span class="tracker-swatch is-{{ .class }}"></span>{{ .name }}</span>
+    {{ end }}
+    <span class="tracker-legend-item"><span class="tracker-swatch is-other"></span>{{ $ui.other_label }}</span>
+  </div>
+  {{ with $ui.footnote }}<p class="tracker-footnote">{{ . }}</p>{{ end }}
+</section>

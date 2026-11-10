@@ -1,0 +1,56 @@
+{{ $ui := site.Data.tracker.ui }}
+{{ $s := .summary }}
+{{ $days := .days }}
+{{ $scope := .scope }}
+
+{{/* Window line, from config text */}}
+{{ $window := "" }}
+{{ if eq $scope "all" }}
+  {{ $oldest := index $days (sub (len $days) 1) }}
+  {{ $newest := index $days 0 }}
+  {{ $window = replace $ui.window.all "{from}" $oldest.day }}
+  {{ $window = replace $window "{to}" $newest.day }}
+{{ else }}
+  {{ $window = replace $ui.window.day "{day}" $s.day }}
+  {{ $window = replace $window "{first}" (lang.FormatNumber 0 $s.first_height) }}
+  {{ $window = replace $window "{last}" (lang.FormatNumber 0 $s.last_height) }}
+  {{ if not $s.complete }}{{ $window = printf "%s%s" $window $ui.window.partial }}{{ end }}
+{{ end }}
+{{ $window = replace $window "{blocks}" (lang.FormatNumber 0 $s.block_count) }}
+
+{{ partial "tracker/styles.html" . }}
+<div class="tracker">
+  <header class="tracker-header">
+    <p class="tracker-eyebrow">{{ $ui.dashboard.eyebrow }}</p>
+    <h1>{{ $ui.dashboard.title }}</h1>
+    <p class="tracker-intro">{{ $ui.dashboard.intro }}</p>
+  </header>
+
+  {{ partial "tracker/switcher.html" (dict "days" $days "scope" $scope "day" $s.day) }}
+  <p class="tracker-window tracker-mono">{{ $window }}</p>
+
+  {{ with $ui.compare }}
+    {{ partial "tracker/compare.html" (dict "ui" . "day" $s) }}
+  {{ end }}
+
+  {{ range $ui.sections }}
+    <section class="tracker-section" aria-labelledby="tracker-{{ .id }}">
+      <h2 id="tracker-{{ .id }}">{{ .title }}</h2>
+      <p class="tracker-subtitle">{{ .subtitle }}</p>
+      <div class="tracker-tiles">
+        {{ range .tiles }}
+          {{ partial "tracker/stat-tile.html" (dict "tile" . "day" $s) }}
+        {{ end }}
+      </div>
+      {{ with .footnote }}<p class="tracker-footnote">{{ . }}</p>{{ end }}
+    </section>
+  {{ end }}
+
+  {{ partial "tracker/composition.html" (dict "ui" $ui.composition "day" $s) }}
+
+  {{ if eq $scope "all" }}
+    {{ with $ui.fee_chart }}
+      {{ partial "tracker/fee-chart.html" (dict "ui" . "days" $days) }}
+    {{ end }}
+  {{ end }}
+  </div>

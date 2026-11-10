@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{ $days := sort site.Data.tracker.daily "day" "desc" }}
+{{ with index site.Data.tracker.daily .Params.day }}
+  {{ partial "tracker/dashboard.html" (dict "summary" . "days" $days "scope" "day") }}
+{{ else }}
+  <p>No summary found for {{ .Params.day }}.</p>
+{{ end }}
+{{ end }}

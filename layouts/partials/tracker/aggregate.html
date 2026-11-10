@@ -1,0 +1,13 @@
+{{/* Sum the given fields across a list of daily summaries.
+     Returns a dict shaped like a single summary, so any partial can use it. */}}
+{{ $days := .days }}
+{{ $sums := dict }}
+{{ range .fields }}
+  {{ $field := . }}
+  {{ $total := 0.0 }}
+  {{ range $days }}
+    {{ with index . $field }}{{ $total = add $total (float .) }}{{ end }}
+  {{ end }}
+  {{ $sums = merge $sums (dict $field $total) }}
+{{ end }}
+{{ return $sums }}

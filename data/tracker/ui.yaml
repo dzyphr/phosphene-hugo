@@ -1,0 +1,152 @@
+dashboard:
+  eyebrow: "Bitcoin L1 data carriage statistics"
+  title: "Block utilization and fee statistics from data carriage transactions"
+  intro: "Modern Bitcoin blocks can contain OP_RETURN outputs and inscription envelopes which is data carriage rather than a commonplace monetary Bitcoin transaction. We measured exactly how much space these transactions are taking and how much their senders are paying for that space. All of this data was gathered from a local Bitcoin full node and custom software. The software and data will be publicly available for external verification on other nodes."
+  window_label: "Latest full day summary data"
+  no_data: "No complete days recorded yet."
+
+switcher:
+  label: "Choose a period"
+  all: "All time"
+  latest: "Latest full day"
+  pick: "Pick a day"
+  table_link: "See every day as a table"
+  daynav_label: "Neighbouring days"
+
+window:
+  all: "All recorded days · {from} to {to} · {blocks} blocks"
+  day: "{day} · blocks {first}–{last} · {blocks} blocks"
+  partial: " · partial day"
+
+# Raw fields summed for the all-time view (ratios are recalculated, not summed)
+aggregate_fields:
+  - block_count
+  - size
+  - weight
+  - op_return_count
+  - op_return_bytes
+  - inscription_count
+  - inscription_bytes
+  - data_tx_weight
+  - data_fee_sats
+  - total_fee_sats
+  - subsidy_sats
+  - miner_revenue
+
+
+sections:
+  - id: space
+    title: "Block space usage"
+    subtitle: "Bitcoin blockchain storage capacity usage amongst data carriage transactions."
+    tiles:
+      - field: data_tx_weight_share
+        format: percent
+        label: "Entire data transaction weight share"
+        caption: "of chain capacity was data transactions"
+        note: "The entire transactions not just the data"
+        accent: true
+      - field: weight_share
+        format: percent
+        label: "Data payload weight"
+        caption: "of all the data published on chain was arbitrary non-monetary data"
+        note: "OP_RETURN counted 4×, witness 1×"
+        accent: false
+      - field: byte_share
+        format: percent
+        label: "Byte share"
+        caption: "of all the bytes of data actually stored by nodes was non-monetary arbitrary data"
+        note: "Every functioning node stores and downloads this"
+
+  - id: miners
+    title: "Contribution to consensus layer security budget"
+    subtitle: "Comparing proof of work miner revenue contribution between data carriage and monetary transactions"
+    tiles:
+      - field: data_fee_share
+        format: percent
+        label: "Data fee share"
+        caption: "of total fees were paid by data transactions"
+        accent: true
+      - field: data_fee_rate
+        format: number
+        unit: "sat/vB"
+        label: "Data fee rate average"
+        caption: "is the average fee rate data senders paid for inclusion"
+      - field: other_fee_rate
+        format: number
+        unit: "sat/vB"
+        label: "Monetary fee rate average"
+        caption: "is the average fee rate monetary senders paid for inclusion"
+      - field: data_revenue_share
+        format: percent
+        label: "Total data fee composition"
+        caption: "of miner's total subsisdy including fees come from data transactions"
+    footnote: "As of late 2026, data carriage transactions appear to exhibit an advantage in outbidding monetary transactions during high network usage or cheaply filling space that is not being used by montary transactions during low network usage."
+
+fee_chart:
+  id: fee-rates
+  title: "Fee rates over time"
+  subtitle: "Comparison of daily fee rates paid by monetary and data transactions. (sat/vB, log scale, only uses complete days)"
+  unit: "sat/vB"
+  y_min: 0.1
+  y_max: 20
+  ticks: [0.1, 0.3, 1, 3, 10]
+  band:
+    field: data_fee_rate_median
+    label: "Data median (bucket range)"
+    class: median
+  lines:
+    - { field: data_fee_rate,  label: "Data average",            class: data,  dashed: true }
+    - { field: other_fee_rate, label: "Monetary average", class: other }
+  markers:
+    - { date: "2025-10-12", label: "Bitcoin Core 30 released" }
+  note: "Hover over a day for its values. Markers show when events happened, not that they caused a change."
+
+
+compare:
+  id: fees-vs-space
+  title: "Fees vs space"
+  ratio_label: "fee share ÷ space share"
+  bars:
+    - field: data_tx_weight_share
+      label: "Block space used by data transactions"
+      class: space
+    - field: data_fee_share
+      label: "Share of all fees they paid"
+      class: fees
+  # {ratio} is replaced with fees ÷ space, e.g. 0.46
+  headline_below: "Data transactions paid {ratio}× the cost of monetary transactions"
+  headline_above: "Data transactions paid {ratio}× the cost of monetary transactions"
+
+composition:
+  title: "Data summary graph"
+  subtitle: "Visually compare byte share and transaction weight share"
+  data_suffix: "data"
+  other_label: "Payments and everything else"
+  footnote: "Inscriptions may have a data discount while also carrying more weight than an OP_RETURN. OP_RETURN transactions pay for the entire weight of themselves with no discount."
+
+  rows:
+    - label: "By bytes"
+      total: size
+      segments:
+        - { field: op_return_bytes,   name: "OP_RETURN",    class: opreturn }
+        - { field: inscription_bytes, name: "Inscriptions", class: inscription }
+    - label: "By weight"
+      total: weight
+      segments:
+        - { field: op_return_bytes,   name: "OP_RETURN",    class: opreturn,    multiply: 4 }
+        - { field: inscription_bytes, name: "Inscriptions", class: inscription, multiply: 1 }
+
+daily_table:
+  title: "Daily Summaries"
+  subtitle: "Daily Bitcoin block data composition summaries from newest -> oldest. Click on a date to open a daily summary. List is being extended regularly until we get a complete image of relevant data carriage transactions."
+  day_label: "Day"
+  partial_label: "partial"
+  columns:
+    - { field: block_count,          format: int,     label: "Blocks" }
+    - { field: weight_share,         format: percent, label: "Data weight" }
+    - { field: data_tx_weight_share, format: percent, label: "Data tx space" }
+    - { field: data_fee_share,       format: percent, label: "Share of fees" }
+    - { field: data_fee_rate,        format: number,  label: "Data sat/vB" }
+    - { field: other_fee_rate,       format: number,  label: "Other sat/vB" }
+
+

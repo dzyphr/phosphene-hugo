@@ -1,0 +1,9 @@
+{{/* One page per daily summary, at /tracker/day/<date>/ */}}
+{{ range .Site.Data.tracker.daily }}
+  {{ $.AddPage (dict
+      "path"   (printf "day/%s" .day)
+      "title"  .day
+      "kind"   "page"
+      "params" (dict "day" .day)
+  ) }}
+{{ end }}

@@ -1,0 +1,9 @@
+{{ $v := float .value }}
+{{ $out := printf "%v" .value }}
+{{ if eq .format "percent" }}{{ $out = printf "%.2f%%" $v }}
+{{ else if eq .format "satvb" }}{{ $out = printf "%.2f sat/vB" $v }}
+{{ else if eq .format "number" }}{{ $out = printf "%.2f" $v }}
+{{ else if eq .format "btc" }}{{ $out = printf "%.4f BTC" (div $v 100000000.0) }}
+{{ else if eq .format "int" }}{{ $out = lang.FormatNumber 0 $v }}
+{{ end }}
+{{ return $out }}

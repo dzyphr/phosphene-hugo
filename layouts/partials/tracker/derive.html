@@ -1,0 +1,35 @@
+{{/* Given summed raw fields, add the same calculated fields a daily summary has.
+     Ratios are recalculated from totals, never averaged. */}}
+{{ $s := .summary }}
+{{ $size   := float (default 0 $s.size) }}
+{{ $weight := float (default 0 $s.weight) }}
+{{ $opr    := float (default 0 $s.op_return_bytes) }}
+{{ $ins    := float (default 0 $s.inscription_bytes) }}
+{{ $dtw    := float (default 0 $s.data_tx_weight) }}
+{{ $dfee   := float (default 0 $s.data_fee_sats) }}
+{{ $tfee   := float (default 0 $s.total_fee_sats) }}
+{{ $rev    := float (default 0 $s.miner_revenue) }}
+{{ $other_vbytes := div (sub $weight $dtw) 4.0 }}
+
+{{ $out := dict }}
+{{ if gt $size 0.0 }}
+  {{ $out = merge $out (dict "byte_share" (div (mul (add $opr $ins) 100.0) $size)) }}
+{{ end }}
+{{ if gt $weight 0.0 }}
+  {{ $out = merge $out (dict
+      "weight_share"         (div (mul (add (mul $opr 4.0) $ins) 100.0) $weight)
+      "data_tx_weight_share" (div (mul $dtw 100.0) $weight)) }}
+{{ end }}
+{{ if gt $tfee 0.0 }}
+  {{ $out = merge $out (dict "data_fee_share" (div (mul $dfee 100.0) $tfee)) }}
+{{ end }}
+{{ if gt $dtw 0.0 }}
+  {{ $out = merge $out (dict "data_fee_rate" (div $dfee (div $dtw 4.0))) }}
+{{ end }}
+{{ if gt $other_vbytes 0.0 }}
+  {{ $out = merge $out (dict "other_fee_rate" (div (sub $tfee $dfee) $other_vbytes)) }}
+{{ end }}
+{{ if gt $rev 0.0 }}
+  {{ $out = merge $out (dict "data_revenue_share" (div (mul $dfee 100.0) $rev)) }}
+{{ end }}
+{{ return merge $s $out }}

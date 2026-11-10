@@ -1,0 +1,13 @@
+{{ $tile := .tile }}
+{{ $day := .day }}
+<div class="tracker-tile{{ if $tile.accent }} is-accent{{ end }}">
+  <div class="tracker-tile-label">{{ $tile.label }}</div>
+  <div class="tracker-tile-value">
+    {{ if isset $day $tile.field }}
+      {{ partial "tracker/format.html" (dict "value" (index $day $tile.field) "format" $tile.format) }}
+      {{- with $tile.unit }}<span class="tracker-unit"> {{ . }}</span>{{ end }}
+    {{ else }}—{{ end }}
+  </div>
+  <div class="tracker-tile-caption">{{ $tile.caption }}</div>
+  {{ with $tile.note }}<div class="tracker-tile-note">{{ . }}</div>{{ end }}
+</div>

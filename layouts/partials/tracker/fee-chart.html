@@ -1,0 +1,114 @@
+{{ $ui := .ui }}
+{{ $band := $ui.band }}
+
+{{/* Complete days that have every field the chart needs, oldest first */}}
+{{ $days := slice }}
+{{ range sort .days "day" }}
+  {{ $d := . }}
+  {{ $ok := and $d.complete (isset $d $band.field) }}
+  {{ range $ui.lines }}{{ if not (isset $d .field) }}{{ $ok = false }}{{ end }}{{ end }}
+  {{ if $ok }}{{ $days = $days | append $d }}{{ end }}
+{{ end }}
+
+{{ if gt (len $days) 1 }}
+{{/* Plot area inside a 1000 × 320 viewBox */}}
+{{ $L := 56.0 }}{{ $R := 985.0 }}{{ $T := 16.0 }}{{ $B := 280.0 }}
+{{ $W := sub $R $L }}{{ $H := sub $B $T }}
+{{ $ymin := float $ui.y_min }}{{ $ymax := float $ui.y_max }}
+{{ $ln10 := math.Log 10.0 }}
+{{ $geo := dict "min" $ymin "max" $ymax "top" $T "height" $H
+               "lmin" (div (math.Log $ymin) $ln10) "lmax" (div (math.Log $ymax) $ln10) }}
+{{ $step := div $W (float (sub (len $days) 1)) }}
+{{ $label_gap := 60.0 }}   {{/* minimum horizontal space between month labels */}}
+
+<section class="tracker-section tracker-chart" aria-labelledby="tracker-{{ $ui.id }}">
+  <h2 id="tracker-{{ $ui.id }}">{{ $ui.title }}</h2>
+  <p class="tracker-subtitle">{{ $ui.subtitle }}</p>
+
+  <div class="tracker-legend">
+    <span class="tracker-legend-item"><span class="tracker-chart-key is-{{ $band.class }}"></span>{{ $band.label }}</span>
+    {{ range $ui.lines }}
+      <span class="tracker-legend-item"><span class="tracker-chart-key-line is-{{ .class }}{{ if .dashed }} is-dashed{{ end }}"></span>{{ .label }}</span>
+    {{ end }}
+  </div>
+
+  <svg viewBox="0 0 1000 320" role="img" aria-labelledby="tracker-{{ $ui.id }}" class="tracker-chart-svg">
+
+    {{/* Horizontal gridlines and their labels */}}
+    {{ range $ui.ticks }}
+      {{ $y := partial "tracker/log-y.html" (merge $geo (dict "value" .)) }}
+      <line x1="{{ $L }}" x2="{{ $R }}" y1="{{ printf "%.1f" $y }}" y2="{{ printf "%.1f" $y }}" class="tracker-chart-grid"></line>
+      <text x="{{ sub $L 8 }}" y="{{ printf "%.1f" (add $y 4) }}" class="tracker-chart-axis" text-anchor="end">{{ . }}</text>
+    {{ end }}
+
+    {{/* Median band: top edge left→right, bottom edge built in reverse by prepending */}}
+    {{ $upper := "" }}{{ $lower := "" }}
+    {{ range $i, $d := $days }}
+      {{ $x := add $L (mul $step (float $i)) }}
+      {{ $m := index $d $band.field }}
+      {{ $hi := $ymax }}{{ with $m.high }}{{ $hi = float . }}{{ end }}
+      {{ $yh := partial "tracker/log-y.html" (merge $geo (dict "value" $hi)) }}
+      {{ $yl := partial "tracker/log-y.html" (merge $geo (dict "value" $m.low)) }}
+      {{ $upper = printf "%s %.1f,%.1f" $upper $x $yh }}
+      {{ $lower = printf "%.1f,%.1f %s" $x $yl $lower }}
+    {{ end }}
+    <polygon points="{{ $upper }} {{ $lower }}" class="tracker-chart-band is-{{ $band.class }}"></polygon>
+
+    {{/* One line per configured series */}}
+    {{ range $ui.lines }}
+      {{ $line := . }}
+      {{ $pts := "" }}
+      {{ range $i, $d := $days }}
+        {{ $x := add $L (mul $step (float $i)) }}
+        {{ $y := partial "tracker/log-y.html" (merge $geo (dict "value" (index $d $line.field))) }}
+        {{ $pts = printf "%s %.1f,%.1f" $pts $x $y }}
+      {{ end }}
+      <polyline points="{{ $pts }}" class="tracker-chart-line is-{{ $line.class }}{{ if $line.dashed }} is-dashed{{ end }}"></polyline>
+    {{ end }}
+
+    {{/* Event markers, placed at the first day on or after their date */}}
+    {{ range $ui.markers }}
+      {{ $mk := . }}
+      {{ $idx := -1 }}
+      {{ range $i, $d := $days }}{{ if and (lt $idx 0) (ge $d.day $mk.date) }}{{ $idx = $i }}{{ end }}{{ end }}
+      {{ if ge $idx 0 }}
+        {{ $x := add $L (mul $step (float $idx)) }}
+        <line x1="{{ printf "%.1f" $x }}" x2="{{ printf "%.1f" $x }}" y1="{{ $T }}" y2="{{ $B }}" class="tracker-chart-marker"></line>
+        <text x="{{ printf "%.1f" (add $x 6) }}" y="{{ add $T 12 }}" class="tracker-chart-marker-label">{{ $mk.label }}</text>
+      {{ end }}
+    {{ end }}
+
+    {{/* Month labels along the bottom, skipping any too close to the previous one */}}
+    {{ $prev := "" }}
+    {{ $last_x := -1000.0 }}
+    {{ range $i, $d := $days }}
+      {{ $mon := substr $d.day 0 7 }}
+      {{ if ne $mon $prev }}
+        {{ $prev = $mon }}
+        {{ $x := add $L (mul $step (float $i)) }}
+        {{ if ge (sub $x $last_x) $label_gap }}
+          {{ $last_x = $x }}
+          {{ $t := time.AsTime $d.day }}
+          {{ $label := $t.Format "Jan" }}
+          {{ if or (eq $i 0) (eq ($t.Format "01") "01") }}{{ $label = $t.Format "Jan 2006" }}{{ end }}
+          <line x1="{{ printf "%.1f" $x }}" x2="{{ printf "%.1f" $x }}" y1="{{ $B }}" y2="{{ add $B 5 }}" class="tracker-chart-grid"></line>
+          <text x="{{ printf "%.1f" $x }}" y="{{ add $B 22 }}" class="tracker-chart-axis">{{ $label }}</text>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Invisible hover strips, one per day, with a native tooltip */}}
+    {{ range $i, $d := $days }}
+      {{ $x := sub (add $L (mul $step (float $i))) (div $step 2.0) }}
+      {{ $m := index $d $band.field }}
+      <rect x="{{ printf "%.1f" $x }}" y="{{ $T }}" width="{{ printf "%.2f" $step }}" height="{{ $H }}" class="tracker-chart-hit">
+        <title>{{ $d.day }}
+{{ range $ui.lines }}{{ .label }}: {{ printf "%.2f" (index $d .field) }} {{ $ui.unit }}
+{{ end }}{{ $band.label }}: {{ $m.low }}–{{ with $m.high }}{{ . }}{{ else }}+{{ end }} {{ $ui.unit }}</title>
+      </rect>
+    {{ end }}
+  </svg>
+
+  {{ with $ui.note }}<p class="tracker-footnote">{{ . }}</p>{{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ $ui := site.Data.tracker.ui }}
+{{ with site.Data.tracker.daily }}
+  {{ $days := sort . "day" "desc" }}
+  {{ $sums := partial "tracker/aggregate.html" (dict "days" $days "fields" $ui.aggregate_fields) }}
+  {{ $all  := partial "tracker/derive.html" (dict "summary" $sums) }}
+  {{ partial "tracker/dashboard.html" (dict "summary" $all "days" $days "scope" "all") }}
+{{ else }}
+  <p>{{ $ui.dashboard.no_data }}</p>
+{{ end }}
+{{ end }}

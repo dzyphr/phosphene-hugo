@@ -1,0 +1,8 @@
+{{/* Map a value to an SVG y coordinate on a log10 scale.
+     Values outside [min, max] are clamped to the edges. */}}
+{{ $v := float .value }}
+{{ if lt $v .min }}{{ $v = .min }}{{ end }}
+{{ if gt $v .max }}{{ $v = .max }}{{ end }}
+{{ $l := div (math.Log $v) (math.Log 10.0) }}
+{{ $t := div (sub $l .lmin) (sub .lmax .lmin) }}
+{{ return add .top (mul .height (sub 1.0 $t)) }}

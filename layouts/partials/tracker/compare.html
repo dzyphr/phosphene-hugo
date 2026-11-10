@@ -1,0 +1,40 @@
+{{ $ui := .ui }}
+{{ $day := .day }}
+{{ $space_bar := index $ui.bars 0 }}
+{{ $fees_bar  := index $ui.bars 1 }}
+
+{{ if and (isset $day $space_bar.field) (isset $day $fees_bar.field) }}
+  {{ $space := float (index $day $space_bar.field) }}
+  {{ $fees  := float (index $day $fees_bar.field) }}
+  {{ $ratio := 0.0 }}
+  {{ if gt $space 0.0 }}{{ $ratio = div $fees $space }}{{ end }}
+  {{ $headline := $ui.headline_above }}
+  {{ if lt $ratio 1.0 }}{{ $headline = $ui.headline_below }}{{ end }}
+  {{ $ratio_text := printf "%.2f" $ratio }}
+
+  <section class="tracker-compare" aria-labelledby="tracker-{{ $ui.id }}">
+    <div class="tracker-compare-summary">
+      <h2 id="tracker-{{ $ui.id }}">{{ $ui.title }}</h2>
+      <div class="tracker-compare-ratio">{{ $ratio_text }}×</div>
+      <div class="tracker-compare-ratio-label">{{ $ui.ratio_label }}</div>
+      <p class="tracker-compare-headline">{{ replace $headline "{ratio}" $ratio_text }}</p>
+    </div>
+
+    <div class="tracker-compare-bars">
+      {{ range $ui.bars }}
+        {{ $pct := float (index $day .field) }}
+        <div class="tracker-bar-row">
+          <div class="tracker-bar-head">
+            <span>{{ .label }}</span>
+            <span class="tracker-mono">{{ printf "%.2f%%" $pct }}</span>
+          </div>
+          <div class="tracker-bar tracker-bar-tall" role="img"
+               aria-label="{{ .label }}: {{ printf "%.2f" $pct }} percent">
+            <div class="tracker-bar-seg is-{{ .class }}" style="width: {{ printf "%.3f" $pct }}%"></div>
+          </div>
+        </div>
+      {{ end }}
+      {{ with $ui.note }}<p class="tracker-footnote">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+{{ end }}

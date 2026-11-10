@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{ partial "tracker/styles.html" . }}
+{{ $ui := site.Data.tracker.ui.daily_table }}
+
+<div class="tracker">
+  <header class="tracker-header">
+    <h1>{{ $ui.title }}</h1>
+    <p class="tracker-intro">{{ $ui.subtitle }}</p>
+  </header>
+
+  {{ with site.Data.tracker.daily }}
+  {{ $days := sort . "day" "desc" }}
+  {{ partial "tracker/switcher.html" (dict "days" $days "scope" "daily" "day" "") }}
+    <div class="tracker-table-wrap">
+      <table class="tracker-table">
+        <thead>
+          <tr>
+            <th scope="col">{{ $ui.day_label }}</th>
+            {{ range $ui.columns }}<th scope="col">{{ .label }}</th>{{ end }}
+          </tr>
+        </thead>
+        <tbody>
+          {{ range sort . "day" "desc" }}
+            {{ $day := . }}
+            <tr>
+              <th scope="row">
+                <a href="{{ printf "tracker/day/%s/" $day.day | relURL }}">{{ $day.day }}</a>
+                {{ if not $day.complete }}<span class="tracker-tag">{{ $ui.partial_label }}</span>{{ end }}
+              </th>
+              {{ range $ui.columns }}
+                <td class="tracker-mono">
+                  {{ if isset $day .field }}
+                    {{ partial "tracker/format.html" (dict "value" (index $day .field) "format" .format) }}
+                  {{ else }}—{{ end }}
+                </td>
+              {{ end }}
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  {{ else }}
+    <p>{{ site.Data.tracker.ui.dashboard.no_data }}</p>
+  {{ end }}
+</div>
+{{ end }}
