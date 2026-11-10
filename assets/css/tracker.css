@@ -1,15 +1,23 @@
 /* Colors: change these to restyle the whole tracker */
 .tracker {
-  --tracker-bg-card: #16181C;
-  --tracker-border: #26292F;
-  --tracker-text: #F2F2F0;
-  --tracker-muted: #A1A6AE;
-  --tracker-accent: #F7931A;
-  --tracker-opreturn: #F7931A;
-  --tracker-inscription: #FFD08A;
-  --tracker-other: #2A2D33;
+  --tracker-bg-card: #F3F4F6;       /* light grey, so cards stand out from the white page */
+  --tracker-bg-panel: #FFFFFF;
+  --tracker-border: #D1D5DB;
+  --tracker-text: #111317;
+  --tracker-muted: #4B5563;         /* readable grey, about 7:1 on the cards */
+  --tracker-accent: #F7931A;        /* fills */
+  --tracker-accent-text: #A34F00;   /* orange text, readable on light backgrounds */
+  --tracker-on-accent: #0E0F11;
+  --tracker-other: #E5E7EB;         /* empty part of bars */
+  --tracker-line-other: #374151;    /* "everything else" line, space bar */
+  --tracker-faint: #9CA3AF;
+  --tracker-band-opacity: 0.35;
+  --tracker-hover: rgba(0, 0, 0, 0.05);
+  --tracker-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   --tracker-mono: "JetBrains Mono", ui-monospace, monospace;
-
+  --tracker-opreturn: #F7931A;
+  --tracker-inscription: #E9A84A;
+  color: var(--tracker-text);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -62,7 +70,7 @@
 /* Segment colors, matched by the "class" names in ui.yaml */
 .is-opreturn    { background: var(--tracker-opreturn); }
 .is-inscription { background: var(--tracker-inscription); }
-.is-other       { background: var(--tracker-other); border: 1px solid #4A4F58; }
+.is-other       { background: var(--tracker-faint); border: 1px solid #4A4F58; }
 
 /* Segmented control */
 .tracker-switch {
@@ -81,9 +89,9 @@
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
-.tracker-switch-btn:hover { color: var(--tracker-text); background: rgba(255, 255, 255, 0.05); }
+.tracker-switch-btn:hover { color: var(--tracker-text); background: var(--tracker-hover); }
 .tracker-switch-btn[aria-current="page"],
-.tracker-switch-btn.is-active { background: var(--tracker-accent); color: #0E0F11; }
+.tracker-switch-btn.is-active { background: var(--tracker-accent); color: var(--tracker-on-accent); }
 
 /* Day picker */
 .tracker-picker { position: relative; }
@@ -102,10 +110,10 @@
   position: absolute; top: calc(100% + 10px); left: 0; z-index: 20;
   width: min(340px, 85vw); max-height: 380px; overflow-y: auto;
   padding: 14px;
-  background: #1B1E23;
+  background: var(--tracker-bg-panel);
   border: 1px solid var(--tracker-border);
   border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--tracker-shadow);
   grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px;
 }
 .tracker-picker-month {
@@ -119,12 +127,12 @@
   min-height: 40px; border-radius: 8px;
   font-family: var(--tracker-mono); font-size: 13px;
   color: var(--tracker-text); text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--tracker-hover);
   border: 1px solid transparent;
 }
 .tracker-picker-day:hover { border-color: var(--tracker-accent); color: var(--tracker-accent); }
-.tracker-picker-day.is-partial { border: 1px dashed #4A4F58; background: transparent; }
-.tracker-picker-day[aria-current="page"] { background: var(--tracker-accent); color: #0E0F11; }
+.tracker-picker-day.is-partial { border: 1px dashed #4A4F58; background: var(--tracker-faint); }
+.tracker-picker-day[aria-current="page"] { background: var(--tracker-on-accent); color: #0E0F11; }
 .tracker-picker-all {
   grid-column: 1 / -1; margin-top: 10px; padding: 10px;
   text-align: center; font-size: 13px;
@@ -196,7 +204,7 @@
   display: flex; flex-direction: column; gap: 20px;
 }
 .tracker-bar-tall { height: 44px; }
-.is-space { background: #D7DAE0; }
+.is-space { background: var(--tracker-line-other); }
 .is-fees  { background: var(--tracker-accent); }
 
 /* Fee-rate chart */
@@ -211,23 +219,25 @@
 .tracker-chart-grid { stroke: var(--tracker-border); stroke-width: 1; }
 .tracker-chart-axis { fill: var(--tracker-muted); font-family: var(--tracker-mono); font-size: 12px; }
 
-.tracker-chart-band.is-median { fill: var(--tracker-accent); fill-opacity: 0.25; }
+.tracker-chart-band.is-median { fill: var(--tracker-accent); fill-opacity: var(--tracker-band-opacity); }
 
 .tracker-chart-line { fill: none; stroke-width: 2; stroke-linejoin: round; }
 .tracker-chart-line.is-data  { stroke: var(--tracker-accent); }
-.tracker-chart-line.is-other { stroke: #D7DAE0; }
+.tracker-chart-line.is-other { stroke: var(--tracker-line-other); }
 .tracker-chart-line.is-dashed { stroke-dasharray: 6 4; }
 
-.tracker-chart-marker { stroke: #8A8F98; stroke-width: 1; stroke-dasharray: 3 3; }
-.tracker-chart-marker-label { fill: #C9CDD3; font-size: 12px; }
+.tracker-chart-marker { stroke: var(--tracker-faint); stroke-width: 1; stroke-dasharray: 3 3; }
+.tracker-chart-marker-label { fill: var(--tracker-muted); font-size: 12px; }
 
 .tracker-chart-hit { fill: transparent; }
-.tracker-chart-hit:hover { fill: rgba(255, 255, 255, 0.06); }
+.tracker-chart-hit:hover { fill: var(--tracker-hover); }
 
 /* Legend keys */
 .tracker-chart-key { width: 18px; height: 12px; border-radius: 3px; }
 .tracker-chart-key.is-median { background: var(--tracker-accent); opacity: 0.4; }
 .tracker-chart-key-line { width: 24px; height: 0; border-top: 2px solid; }
 .tracker-chart-key-line.is-data  { border-color: var(--tracker-accent); }
-.tracker-chart-key-line.is-other { border-color: #D7DAE0; }
+.tracker-chart-key-line.is-other { border-color: var(--tracker-line-other); }
 .tracker-chart-key-line.is-dashed { border-top-style: dashed; }
+
+.tracker-tile, .tracker-compare, .tracker-chart { box-shadow: var(--tracker-shadow); }
