@@ -241,3 +241,27 @@
 .tracker-chart-key-line.is-dashed { border-top-style: dashed; }
 
 .tracker-tile, .tracker-compare, .tracker-chart { box-shadow: var(--tracker-shadow); }
+
+/* ===== NEW: community card ===== */
+.tracker .tracker-community{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;padding:1.25rem 1.5rem;background:var(--tracker-bg-card);border:1px solid var(--tracker-border);border-radius:12px;box-shadow:var(--tracker-shadow);}
+.tracker .tracker-community-heading{margin:0 0 .25rem;font-size:1.1rem;color:var(--tracker-text);}
+.tracker .tracker-community-body{margin:0;color:var(--tracker-muted);}
+.tracker .tracker-community-links{display:flex;flex-wrap:wrap;gap:.5rem;}
+.tracker a.tracker-community-link{padding:.5rem .9rem;border-radius:999px;border:1px solid var(--tracker-border);color:var(--tracker-text);text-decoration:none;}
+.tracker a.tracker-community-link:hover{background:var(--tracker-hover);}
+.tracker a.tracker-community-link.is-primary{background:var(--tracker-accent);border-color:var(--tracker-accent);color:var(--tracker-on-accent);}
+
+
+.tracker .tracker-switch {display:flex;width:fit-content;margin-inline:auto; }
+.tracker .tracker-window {display:flex;width:fit-content;margin-inline:auto; }
+
+/* ===== NEW: selected day uses the accent fill ===== */
+.tracker .DAYCLASS.SELECTEDCLASS{background:var(--tracker-accent);color:var(--tracker-on-accent);border-color:var(--tracker-accent);}
+/* ===== END NEW ===== */
+
+/* ===== CHANGED: accent fill, readable text ===== */
+.tracker-picker-day[aria-current=page] {
+  background: var(--tracker-accent);
+  color: var(--tracker-on-accent);
+}
+/* ===== END CHANGED ===== */

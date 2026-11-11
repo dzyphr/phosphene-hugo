@@ -1,0 +1,16 @@
+{{/* ===== NEW ===== */}}
+{{ with site.Data.tracker.ui.community }}
+<aside class="tracker-community">
+  <div>
+    <h2 class="tracker-community-heading">{{ .heading }}</h2>
+    <p class="tracker-community-body">{{ .body }}</p>
+  </div>
+  <div class="tracker-community-links">
+    {{ range .links }}
+      <a class="tracker-community-link{{ if .primary }} is-primary{{ end }}"
+         href="{{ .url | safeURL }}" target="_blank" rel="noopener">{{ .label }}</a>
+    {{ end }}
+  </div>
+</aside>
+{{ end }}
+{{/* ===== END NEW ===== */}}

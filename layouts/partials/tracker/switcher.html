@@ -6,13 +6,6 @@
 {{ range first 1 (where $days "complete" true) }}{{ $latest_day = .day }}{{ end }}
 {{ $picking := or (eq $scope "daily") (and (eq $scope "day") (ne $current $latest_day)) }}
 <nav class="tracker-switch" aria-label="{{ $ui.label }}">
-  <a class="tracker-switch-btn" href="{{ "tracker/" | relURL }}"
-     {{- if eq $scope "all" }} aria-current="page"{{ end }}>{{ $ui.all }}</a>
-
-  {{ with $latest_day }}
-    <a class="tracker-switch-btn" href="{{ printf "tracker/day/%s/" . | relURL }}"
-       {{- if eq $current . }} aria-current="page"{{ end }}>{{ $ui.latest }}</a>
-  {{ end }}
   <div class="tracker-picker">
   <a class="tracker-switch-btn{{ if $picking }} is-active{{ end }}"
      href="{{ "tracker/daily/" | relURL }}" aria-haspopup="true">
@@ -33,7 +26,15 @@
          {{- if eq .day $current }} aria-current="page"{{ end }}>{{ substr .day 8 2 }}</a>
     {{ end }}
    </div>
-  </div>  
+  </div>
+  <a class="tracker-switch-btn" href="{{ "tracker/" | relURL }}"
+     {{- if eq $scope "all" }} aria-current="page"{{ end }}>{{ $ui.all }}</a>
+
+  {{ with $latest_day }}
+    <a class="tracker-switch-btn" href="{{ printf "tracker/day/%s/" . | relURL }}"
+       {{- if eq $current . }} aria-current="page"{{ end }}>{{ $ui.latest }}</a>
+  {{ end }}
+    
 </nav>
 
 {{ if eq $scope "day" }}

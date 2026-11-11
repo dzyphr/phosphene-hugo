@@ -1,4 +1,7 @@
+
 <footer class="footer">
+{{ partial "tip.html" . }}
+
     <!-- Option for user to inject custom html -->
     {{ if .Site.Params.CustomFooterHTML }}
     {{ .Site.Params.CustomFooterHTML | safeHTML }}
@@ -8,6 +11,6 @@
     <span>&copy; {{ now.Year }} {{ .Site.Params.Footer}}</span>
     {{ end }}
     <span>
-	    {{ .Site.Params.Hugothememessage }} <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+        Powered by Hugo theme: <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
     </span>
 </footer>

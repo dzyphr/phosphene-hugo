@@ -7,9 +7,9 @@ dashboard:
 
 switcher:
   label: "Choose a period"
+  pick: "Pick a day"
   all: "All time"
   latest: "Latest full day"
-  pick: "Pick a day"
   table_link: "See every day as a table"
   daynav_label: "Neighbouring days"
 
@@ -99,7 +99,7 @@ fee_chart:
     - { field: other_fee_rate, label: "Monetary average", class: other }
   markers:
     - { date: "2025-10-12", label: "Bitcoin Core 30 released" }
-  note: "Hover over a day for its values. Markers show when events happened, not that they caused a change."
+  note: "Hover over a day to see daily values. Markers indicate notable events."
 
 
 compare:
@@ -148,5 +148,17 @@ daily_table:
     - { field: data_fee_share,       format: percent, label: "Share of fees" }
     - { field: data_fee_rate,        format: number,  label: "Data sat/vB" }
     - { field: other_fee_rate,       format: number,  label: "Other sat/vB" }
+
+# ===== NEW =====
+community:
+  heading: "Interested? Concerned? Both? Join the data discussion!"
+  body: "/join #bitcoin_hashed on Libera.Chat. Discuss anything and everything related to the Bitcoin data dillema."
+  links:
+    - label: "Join in browser"
+      url: "https://web.libera.chat/#bitcoin_hashed"
+      primary: true
+    - label: "Open in IRC client"
+      url: "ircs://irc.libera.chat:6697/#bitcoin_hashed"
+
 
 

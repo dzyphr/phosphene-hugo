@@ -53,4 +53,5 @@
       {{ partial "tracker/fee-chart.html" (dict "ui" . "days" $days) }}
     {{ end }}
   {{ end }}
-  </div>
+  {{ partial "tracker/community.html" . }}
+</div>

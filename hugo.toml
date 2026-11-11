@@ -43,7 +43,7 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = "software"
     name = "Software"
-    url = "https://phosphene.xyz/posts/software_releases/"
+    url = "/posts/software_releases/"
     weight = 2
 
   [[menu.main]]

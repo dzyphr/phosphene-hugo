@@ -1,0 +1,14 @@
+{{/* ===== NEW ===== */}}
+{{ with site.Data.tip }}
+{{ $css := resources.Get "css/tip.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<section class="tip">
+  <p class="tip-heading">{{ .heading }}</p>
+  <p class="tip-body">{{ .body }}</p>
+  {{ with .bitcoin }}
+    {{ $uri := printf "bitcoin:%s" .address }}
+    <code class="tip-address">{{ .address }}</code>
+  {{ end }}
+</section>
+{{ end }}
+{{/* ===== END NEW ===== */}}
