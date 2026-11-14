@@ -25,7 +25,11 @@ Kernel Version: `6.12.115-2wc1`
 
 This keeps your original kernel installed if you need to revert back to it.
 
-The original kernel shipped with Devuan at the moment at least is not built with rust as far as I can tell.
+If a new kernel is released and we don't ship a descaled kernel right away `sudo apt update && sudo apt full-upgrade` will install the latest Devuan kernel.
+
+Then you just reboot and it will default you into the newest one with any of the latest security updates.
+
+The original kernel shipped with Devuan is not detected to be built with rust as of writing.
 
 Many other distros are shipping default rust kernels.
 
