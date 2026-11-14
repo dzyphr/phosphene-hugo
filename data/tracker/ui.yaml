@@ -14,8 +14,8 @@ switcher:
   daynav_label: "Neighbouring days"
 
 window:
-  all: "All recorded days · {from} to {to} · {blocks} blocks"
-  day: "{day} · blocks {first}–{last} · {blocks} blocks"
+  all: "Summary of every day recorded so far · {from} to {to} · {blocks} blocks"
+  day: "day: {day} · height range: {first}–{last} · {blocks} blocks "
   partial: " · partial day"
 
 # Raw fields summed for the all-time view (ratios are recalculated, not summed)
@@ -108,14 +108,14 @@ compare:
   ratio_label: "fee share ÷ space share"
   bars:
     - field: data_tx_weight_share
-      label: "Block space used by data transactions"
+      label: "Total block space % used by data transactions"
       class: space
     - field: data_fee_share
-      label: "Share of all fees they paid"
+      label: "Total fee % paid by data transactions"
       class: fees
   # {ratio} is replaced with fees ÷ space, e.g. 0.46
-  headline_below: "Data transactions paid {ratio}× the cost of monetary transactions"
-  headline_above: "Data transactions paid {ratio}× the cost of monetary transactions"
+  headline_below: "Data fees cost {ratio}× monetary fees"
+  headline_above: "Data fees cost {ratio}× monetary fees"
 
 composition:
   title: "Data summary graph"
