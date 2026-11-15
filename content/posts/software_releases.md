@@ -1,6 +1,6 @@
 +++
 title = 'Software Releases'
-date = 2026-11-04T03:48:59.254Z
+date = 2026-11-14T03:48:59.254Z
 draft = false
 type = "post"
 tags = ["Releases", "Downloads"]
