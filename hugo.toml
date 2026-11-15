@@ -10,7 +10,7 @@ enableRobotsTXT = true
 [params]
   description = "Software Development and Releases"
   showPostsOnHomePage = "recent"
-  avatarURL = "/humm.png"
+  avatarURL = "/yancabrera-hummingbird-1823829_edit.jpg"
   ShowBackToTopButton = true
   metaKeywords = ["blog", "gokarna", "hugo"] #seo
   accentColor = "#8000ff"
