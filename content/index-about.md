@@ -20,5 +20,5 @@ Hosted software releases listed here:
 
 We are seeking developers interested in working on the following kinds of projects:
 - verifiable source control & release pipelines
-- Linux distribution maintainence and development 
+- Linux distribution maintenance and development 
 - Linux dependency trailing and audit tools
