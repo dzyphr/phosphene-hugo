@@ -10,9 +10,9 @@ enableRobotsTXT = true
 [params]
   description = "Software Development and Releases"
   showPostsOnHomePage = "recent"
-  avatarURL = "/yancabrera-hummingbird-1823829_edit.jpg"
+  avatarURL = "/yancabrera-hummingbird-1823829_flipped.png"
   ShowBackToTopButton = true
-  metaKeywords = ["blog", "gokarna", "hugo"] #seo
+  metaKeywords = ["blog", "gokarna", "hugo", "linux", "gnu", "watercraft", "bitcoin", "irc", "foss"] #seo
   accentColor = "#8000ff"
   footer = "Phosphene.xyz"
   Hugothememessage = "Powered by Hugo Theme:"

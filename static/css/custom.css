@@ -8,3 +8,7 @@
     margin: 0 0 0 -15px;
     width: calc(73% + 15px);
 }
+
+.home-about .avatar img {
+    object-position: 85% 12%;
+}
